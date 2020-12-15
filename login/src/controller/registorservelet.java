@@ -2,6 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +25,7 @@ public class registorservelet extends HttpServlet {
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String firstname=request.getParameter("first_name");
 		String lastname=request.getParameter("last_name");
 		String dob=request.getParameter("birthday");
@@ -29,10 +34,21 @@ public class registorservelet extends HttpServlet {
 		String phonenumber=request.getParameter("phone");
 		String password=request.getParameter("password");
 		
+		System.out.println(dob);
+		
+		DateFormat df=new SimpleDateFormat("dd-MMM-yy");
+        String dob1=dob;
+        try {
+			Date d=(Date) df.parse(dob1);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Model model=new Model();
 		model.setFirstname(firstname);
 		model.setLastname(lastname);
-		model.setGender(dob);
+		model.setGender(dob1);
 		model.setGender(gender);
 		model.setEmail(email);
 		model.setPhonenumber(phonenumber);

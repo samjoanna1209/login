@@ -11,9 +11,6 @@ public class Model {
 	private String password;
 	
 	
-	
-	
-	
 	@Override
 	public String toString() {
 		return "Model [firstname=" + firstname + ", lastname=" + lastname + ", dob=" + dob + ", gender=" + gender

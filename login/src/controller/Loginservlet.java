@@ -44,7 +44,11 @@ public class Loginservlet extends HttpServlet {
 		Dao dao=new Dao();
 		boolean re=dao.login(model);
 		if(re==true){
-			pw.println("User login this page.....");
+			pw.println("login successfull");
+			request.getRequestDispatcher("/chat.html").forward(request, response);
+			
+			
+			
 		}
 		else{
 			pw.println("Credentials Invaild.....");
